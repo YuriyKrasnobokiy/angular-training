@@ -1,0 +1,15 @@
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+  <p>Please fillup your first and last name</p>
+  <label for="firstName">First name: </label>
+  <input [class.invalid]="profileForm.get('firstName')?.errors?.['forbiddenName']" appForbiddenName="bob" formControlName="firstName" type="text">
+  <!-- <input [class.invalid]="profileForm.get('firstName')?.invalid  &&
+  profileForm.get('firstName')?.touched" appForbiddenName="bob" formControlName="firstName" type="text"> -->
+  
+  <label for="lastName">Last name: </label>
+  <input formControlName="lastName" type="text">
+
+  <button type="button" (click)="updateForm()">Update form</button>
+  <button type="submit" [disabled]="!profileForm.valid">Submit form</button>
+  <button type="button" (click)="updateFirstName()" [disabled]="profileForm.get('firstName')?.invalid">updateFirstName</button>
+  <button type="button" (click)="updateLastName()" [disabled]="profileForm.get('lastName')?.invalid">updateLastName</button>
+</form>
