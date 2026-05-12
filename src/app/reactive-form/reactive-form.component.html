@@ -1,0 +1,18 @@
+<form [formGroup]="formValues" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="name">Name: </label>
+    <input name="name" type="text" formControlName="name" [class.invalid]="formValues.get('name')?.invalid && formValues.get('name')?.touched"/>
+    @if (formValues.get('name')?.errors?.['minlength'] && formValues.get('name')?.touched) 
+      {<p>Min 2 characters</p>}
+    @if (formValues.get('name')?.hasError('required') && formValues.get('name')?.touched)
+      {<p>Name is required</p>}
+    @if (formValues.get('name')?.hasError('forbiddenName') && formValues.get('name')?.touched)
+      {<p>Name bob is not right</p>}
+  </div>
+  <div>
+    <label for="email">Email: </label>
+    <input name="email" type="text" formControlName="email" [class.invalid]="formValues.get('email')?.invalid && formValues.get('email')?.touched"/>
+    @if (formValues.get('email')?.hasError('required') && formValues.get('email')?.touched){<p>Email is required</p>}
+  </div>
+  <button type="submit" [disabled]="formValues.invalid">Submit</button>
+</form>

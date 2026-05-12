@@ -3,11 +3,12 @@ import { Task } from './tasks-iterface';
 import { FormsModule } from '@angular/forms';
 import { NameEditorComponent } from './name-editor/name-editor.component';
 import { ProfileEditorComponent } from './profile-editor/profile-editor.component';
+import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [FormsModule, NameEditorComponent, ProfileEditorComponent],
+  imports: [FormsModule, NameEditorComponent, ProfileEditorComponent, ReactiveFormComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
