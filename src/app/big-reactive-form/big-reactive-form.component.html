@@ -1,0 +1,39 @@
+<form [formGroup]="formValues" (ngSubmit)="onFormSubmit()">
+
+  <div>
+    <label for="name">Name:</label>
+    <input id="name" formControlName="name" type="text" [class.invalid]="name?.invalid && name?.touched"/>
+    <p *ngIf="name?.invalid && name?.touched" class="error">{{ invalidDefaultMessage }}</p>
+    <!-- <input id="name" formControlName="name" type="text" [class.invalid]="formValues.controls.name.invalid && formValues.controls.name.touched"/>
+    @if(formValues.controls.name.invalid && formValues.controls.name.touched){<p class="error">{{ invalidDefaultMessage }}</p>} -->
+  </div>
+
+  <div>
+    <label for="email">Email:</label>
+    <input id="email" formControlName="email" autocomplete="off" type="text" [class.invalid]="email?.invalid && email?.touched"/>
+    <p *ngIf="!email?.hasError('email') && email?.invalid && email?.touched" class="error">{{ invalidDefaultMessage }}</p>
+    <p *ngIf="email?.hasError('email') && email?.touched" class="error">Please enter a valid email</p>
+  </div>
+
+  <div>
+    <label for="age">Age:</label>
+    <input id="age" formControlName="age" type="number" [class.invalid]="age?.invalid && age?.touched"/>
+    <p *ngIf="!age?.hasError('ageInvalid') && age?.invalid && age?.touched" class="error">{{ invalidDefaultMessage }}</p>
+    <p *ngIf="age?.hasError('ageInvalid') && age?.touched" class="error">{{ age?.errors?.['ageInvalid'] }}</p>
+  </div>
+
+  <div>
+    <label for="password">Password:</label>
+    <input id="password" formControlName="password" type="password" autocomplete="new-password" [class.invalid]="password?.invalid && password?.touched"/>
+    <p *ngIf="password?.hasError('minLength') && password?.touched" class="error">To short password</p>
+    <p *ngIf="!password?.hasError('minLength') && password?.invalid && password?.touched" class="error">{{ invalidDefaultMessage }}</p>
+  </div>
+
+  <div>
+    <label for="consent">Consent:</label>
+    <input id="consent" formControlName="consent" type="checkbox" [class.invalid]="consent?.invalid && consent?.touched"/>
+    <p *ngIf="consent?.invalid && consent?.touched" class="error">{{ invalidDefaultMessage }}</p>
+  </div>
+
+  <button type="submit" [disabled]="!formValues?.valid">Submit</button>
+</form>

@@ -4,11 +4,13 @@ import { FormsModule } from '@angular/forms';
 import { NameEditorComponent } from './name-editor/name-editor.component';
 import { ProfileEditorComponent } from './profile-editor/profile-editor.component';
 import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
+import { BigReactiveFormComponent } from './big-reactive-form/big-reactive-form.component';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [FormsModule, NameEditorComponent, ProfileEditorComponent, ReactiveFormComponent],
+  imports: [NgIf, FormsModule, BigReactiveFormComponent, NameEditorComponent, ProfileEditorComponent, ReactiveFormComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
