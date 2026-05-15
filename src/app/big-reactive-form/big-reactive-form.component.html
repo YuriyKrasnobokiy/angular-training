@@ -3,7 +3,8 @@
   <div>
     <label for="name">Name:</label>
     <input id="name" formControlName="name" type="text" [class.invalid]="name?.invalid && name?.touched"/>
-    <p *ngIf="name?.invalid && name?.touched" class="error">{{ invalidDefaultMessage }}</p>
+    <p *ngIf="name?.hasError('minlength') && name?.touched" class="error">To short name</p>
+    <p *ngIf="!name?.hasError('minlength') && name?.invalid && name?.touched" class="error">{{ invalidDefaultMessage }}</p>
     <!-- <input id="name" formControlName="name" type="text" [class.invalid]="formValues.controls.name.invalid && formValues.controls.name.touched"/>
     @if(formValues.controls.name.invalid && formValues.controls.name.touched){<p class="error">{{ invalidDefaultMessage }}</p>} -->
   </div>
@@ -25,8 +26,8 @@
   <div>
     <label for="password">Password:</label>
     <input id="password" formControlName="password" type="password" autocomplete="new-password" [class.invalid]="password?.invalid && password?.touched"/>
-    <p *ngIf="password?.hasError('minLength') && password?.touched" class="error">To short password</p>
-    <p *ngIf="!password?.hasError('minLength') && password?.invalid && password?.touched" class="error">{{ invalidDefaultMessage }}</p>
+    <p *ngIf="password?.hasError('minlength') && password?.touched" class="error">To short password</p>
+    <p *ngIf="!password?.hasError('minlength') && password?.invalid && password?.touched" class="error">{{ invalidDefaultMessage }}</p>
   </div>
 
   <div>
