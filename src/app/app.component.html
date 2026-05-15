@@ -1,8 +1,10 @@
 <input [(ngModel)]="taskText" type="text">
 <button (click)="addTask()">Add</button>
 
+<input [(ngModel)]="searchQuery" type="text">
+<p>{{searchQuery()}}</p>
 <ol>
-@for (task of tasks(); track task.id){
+@for (task of filteredTasks(); track task.id){
   
     <li>{{task.id}} {{task.title}} 
     <button (click)="deleteTask(task.id)">Delete</button></li>
@@ -11,6 +13,7 @@
   <p>There are no tasks yet</p>
 }
 </ol>
+
 
 <!-- <app-name-editor /> -->
 <!-- <app-profile-editor /> -->

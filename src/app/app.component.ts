@@ -1,4 +1,4 @@
-import { Component, model, signal } from '@angular/core';
+import { Component, computed, model, signal } from '@angular/core';
 import { Task } from './tasks-iterface';
 import { FormsModule } from '@angular/forms';
 import { NameEditorComponent } from './name-editor/name-editor.component';
@@ -17,7 +17,16 @@ import { NgIf } from '@angular/common';
 export class AppComponent {
   tasks = signal<Task[]>([]);
   taskText = model('');
+  searchQuery = model('');
   chosedTaskId = signal(null)
+  filteredTasks = computed(()=> {
+    const query = this.searchQuery().toLowerCase();
+
+      if (!query) return this.tasks();
+
+      return this.tasks().filter(t => t.title.toLowerCase().includes(query))
+    }
+  )
 
   addTask() {
     
