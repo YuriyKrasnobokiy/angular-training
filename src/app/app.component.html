@@ -1,21 +1,33 @@
-<input [(ngModel)]="taskText" type="text">
-<button (click)="addTask()">Add</button>
+ <nav>
+  <ul>
+    <li>
+      <a
+        routerLink=""
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        Головна
+      </a>
+    </li>
 
-<input [(ngModel)]="searchQuery" type="text">
-<p>{{searchQuery()}}</p>
-<ol>
-@for (task of filteredTasks(); track task.id){
-  
-    <li>{{task.id}} {{task.title}} 
-    <button (click)="deleteTask(task.id)">Delete</button></li>
-  
-} @empty {
-  <p>There are no tasks yet</p>
-}
-</ol>
+    <li>
+      <a
+        routerLink="reactive"
+        routerLinkActive="active"
+      >
+        Reactive Form
+      </a>
+    </li>
 
+    <li>
+      <a
+        routerLink="tasks"
+        routerLinkActive="active"
+      >
+        Tasks
+      </a>
+    </li>
+  </ul>
+</nav>
 
-<!-- <app-name-editor /> -->
-<!-- <app-profile-editor /> -->
- <!-- <app-reactive-form> -->
- <app-big-reactive-form>
+<router-outlet></router-outlet>

@@ -1,0 +1,10 @@
+<input [(ngModel)]="taskText" type="text">
+<input [(ngModel)]="searchQuery" type="text" placeholder="Search...">
+<button (click)="addTask()" [disabled]="!this.taskText()">Add</button>
+
+@for(task of filteredTasks(); track task.id) {
+  <li>{{task.id}} {{ task.text }}</li>
+  <button type="button" (click)="deleteTask(task.id)">Delete</button>
+} @empty {
+  <p>No tasks yet</p>
+}
