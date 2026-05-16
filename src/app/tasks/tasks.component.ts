@@ -15,7 +15,7 @@ interface Task {
 })
 export class TasksComponent {
   taskText = model('');
-  searchQuery = signal('');
+  searchQuery = model('');
   tasks = signal<Task[]>([]);
   filteredTasks = computed(() => {
     return this.tasks().filter(t=>t.text.toLowerCase().includes(this.searchQuery().toLowerCase().trim()))
@@ -24,16 +24,16 @@ export class TasksComponent {
   addTask() {
     if (!this.taskText()) return;
 
-    this.tasks.update(() => 
-      [...this.tasks(), {
+    this.tasks.update((tasks) => 
+      [...tasks, {
         text: this.taskText(),
-        id: !this.tasks().length ? 0 : (this.tasks().length - 1) + 1
+        id: !tasks.length ? 0 : tasks[tasks.length - 1].id + 1
       }]
     )
     this.taskText.set('')
   }
 
   deleteTask(id: number) {
-    return this.tasks.set(this.tasks().filter(t => t.id !== id))
+    this.tasks.set(this.tasks().filter(t => t.id !== id))
   }
 }
