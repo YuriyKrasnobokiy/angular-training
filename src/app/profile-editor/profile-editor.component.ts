@@ -6,7 +6,8 @@ import { ForbiddenNameDirective } from '../forbidden-name.directive';
   selector: 'app-profile-editor',
   imports: [ReactiveFormsModule, ForbiddenNameDirective],
   templateUrl: './profile-editor.component.html',
-  styleUrl: './profile-editor.component.scss'
+  styleUrl: './profile-editor.component.scss',
+  standalone: true,
 })
 export class ProfileEditorComponent {
   profileForm = new FormGroup({

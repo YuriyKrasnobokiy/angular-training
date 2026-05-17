@@ -8,3 +8,16 @@
 } @empty {
   <p>No tasks yet</p>
 }
+
+
+<div #hoveredArea class="hovered-area">Hover over to load this component!</div>
+
+@defer (on hover(hoveredArea)) {
+  <app-profile-editor></app-profile-editor>
+} @placeholder {
+  <p>Component is loading...</p>
+} @loading {
+  <p>Loading...</p>
+} @error {
+  <p>Oh no 😀</p>
+}
