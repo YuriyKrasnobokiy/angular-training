@@ -1,9 +1,12 @@
 export interface User {
   id: number,
   name: string,
+  phone: string,
   username: string,
   email: string,
-  address: Address
+  website: string,
+  address: Address,
+  company: Company
 }
 
 export interface Address {
@@ -17,4 +20,10 @@ export interface Address {
 export interface Geo {
   lat: string,
   lng: string
+}
+
+export interface Company {
+  bs: string,
+  catchPhrase: string,
+  name: string
 }

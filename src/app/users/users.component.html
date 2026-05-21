@@ -2,9 +2,16 @@
   <li>{{user.name}}</li>
 }
 
-<select [(ngModel)]="selectedUserId">
-  <option value='' label="All"></option>
+<select placeholder="Оберіть юзера" [(ngModel)]="selectedUserId" (change)="onSelect()">
+  <option placeholder="Оберіть юзера" disabled value="" label="----Оберіть юзера----"></option>
+  <option value="" label="All">all</option>
   @for (user of users(); track user.id) {
   <option [label]="user.name" [value]="user.id"></option>
 }
 </select>
+
+<div>
+  <p>Posts</p>
+
+  <app-posts [userId]="selectedUserId()"/>
+</div>

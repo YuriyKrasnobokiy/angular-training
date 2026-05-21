@@ -13,7 +13,7 @@ export class UsersService {
   constructor() { }
 
   getUsersList(): Observable<User[]> {
-    return this.http.get<User[]>(`${this.API_BASE_URL}/users/1/posts`);
+    return this.http.get<User[]>(`${this.API_BASE_URL}/users`);
   }
 
   getUserById(id: number): Observable<User>{
