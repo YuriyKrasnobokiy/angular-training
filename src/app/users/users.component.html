@@ -1,3 +1,10 @@
-@for (user of users(); track user.id) {
+@for (user of filteredUsers(); track user.id) {
   <li>{{user.name}}</li>
 }
+
+<select [(ngModel)]="selectedUserId">
+  <option value='' label="All"></option>
+  @for (user of users(); track user.id) {
+  <option [label]="user.name" [value]="user.id"></option>
+}
+</select>
