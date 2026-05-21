@@ -12,25 +12,23 @@ import { PostsService } from '../services/posts/posts.service';
 export class PostsComponent implements OnInit {
   protected posts = model<Post[]>([]);
   protected feachedPostsById = signal<Post[]>([]);
-  readonly displayPosts = computed(() => this.userId() ? this.feachedPostsById() : this.posts())
+  readonly displayPosts = computed<Post[]>(() => this.userId() ? this.feachedPostsById() : this.posts())
   protected postsService = inject(PostsService);
   readonly userId = input<string>();
 
-  constructor() {
-    console.log(this.userId());
-    effect(() => {
-      if(this.userId()) {
-        this.postsService.getPostsByUserId(Number(this.userId())).subscribe(resp => 
-          this.posts.set(resp)
-        )
-      }
-    }  
-    )
-  }
+  constructor() {}
 
   ngOnInit() {
     this.postsService.getAllPosts().subscribe((resp)=> {
       return this.posts.set(resp)
     })
+  }
+
+  ngOnChanges() {
+    if(this.userId()) {
+        this.postsService.getPostsByUserId(Number(this.userId())).subscribe(resp => 
+          this.feachedPostsById.set(resp)
+        )
+      }
   }
 }

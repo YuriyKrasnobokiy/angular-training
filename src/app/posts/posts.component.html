@@ -1,5 +1,5 @@
 <ul>
-@for (post of posts(); track post.id){
+@for (post of displayPosts(); track post.id){
   <li>
     <h3>{{ post.title}}</h3>
     <p>{{ post.body }}</p>
