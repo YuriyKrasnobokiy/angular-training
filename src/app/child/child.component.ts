@@ -1,4 +1,4 @@
-import { Component, input, output} from '@angular/core';
+import { Component, input, output, signal} from '@angular/core';
 
 @Component({
   selector: 'app-child',
@@ -10,6 +10,7 @@ import { Component, input, output} from '@angular/core';
 export class ChildComponent {
   message = input.required<string>();
   messageFromChild = output<string>();
+  text: string = ('Трололо qjgnf')
 
   sendMessage() {
     this.messageFromChild.emit('Повідомлення від дитини')

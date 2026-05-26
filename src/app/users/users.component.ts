@@ -4,11 +4,12 @@ import { UsersService } from '../services/users/users.service';
 import { FormsModule } from '@angular/forms';
 import { filter, map, of, Subject, switchMap, tap } from 'rxjs';
 import { PostsComponent } from '../posts/posts.component';
+import { PersonNameTransformPipe } from '../pipes/person-name-transform.pipe';
 
 @Component({
   selector: 'app-users',
   standalone: true,
-  imports: [FormsModule, PostsComponent],
+  imports: [FormsModule, PostsComponent, PersonNameTransformPipe],
   templateUrl: './users.component.html',
   styleUrl: './users.component.scss'
 })
